@@ -85,11 +85,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  }, 
+  {
+    title: 'Where Are All The Carti Leaks At? When Will Playboi Carti Drop Whole Lotta Red?',
+    date: 'March 1st, 2020',
+    firstParagraph: `Whole Lotta Red Is Not going to drop any time soon. However if you go to reddit and find the WHOLE LOTTA RED MASTER ZIP, you will find yourself basically already having WHOLE LOTTA RED as Playboi Carti's toxic fanbase has leaked several of his own projects. Although Playboi Carti has such great musical talent, nothing seems to escape toxic fan bases. He will not get any money for the leaks that exist and as a result would mean he would have to drop WLR with atleast 30 different new songs that we have not heard from before..
+          Even after hearing all of this, are you still left with any hope that Playboi Carti is going to drop WLR????? you are a fool to believe that this will actually happen. It might just be that we will not get anything given the fact that a toxic fan base for Carti exists, and the fact that computer hacker nerds exist that are able to find his music and leak it. My My, what I would do to learn how to hack in order to get myself the deluxe edition of Eternal Atake `,
+
+    secondParagraph: `Now I know you all are here to find out where in the heck do fans get a hold of these leaks. I am here to tell you that the only way to be able to get your hands on these leaks are if you either own a reddit account and follow r/rapleaks or if you just are a hacker. I would say if you are like me and do not fit the qualifications of the second description, do not worry rapleaks has you covered. `,
+
+    thirdParagraph: `In other news, this Friday, March 11, 2020, Lil Uzi Vert is going to drop his deluxe edition album of Eternal Atake, which means that all the fans are finally going to be able to bump to Jellybean (kobe rollie). I am a huge fan of this song and I am exstatic to be able to listen to it finally after such a long time. Thank You Lil Uzi for listening to fans and doing us a solid with this one.`
   }
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
+
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
@@ -102,7 +113,7 @@ const data = [
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
-
+ 
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
@@ -112,3 +123,47 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+function articleCreator(object){
+
+  const parentDiv = document.createElement('div'); 
+  const header2 = document.createElement('h2'); 
+  const date = document.createElement('p'); 
+  const p1 = document.createElement('p'); 
+  const p2 = document.createElement('p'); 
+  const p3 = document.createElement('p'); 
+  const daSpan = document.createElement('span'); 
+
+  parentDiv.append(header2); 
+  parentDiv.append(date); 
+  parentDiv.append(p1);
+  parentDiv.append(p2);
+  parentDiv.append(p3);
+  parentDiv.append(daSpan);
+
+  parentDiv.classList.add('article'); 
+  date.classList.add('date'); 
+  daSpan.classList.add('expandButton'); 
+
+  header2.textContent = object.title; 
+  date.textContent = object.date; 
+  p1.textContent = object.firstParagraph;
+  p2.textContent = object.secondParagraph;
+  p3.textContent = object.thirdParagraph; 
+  daSpan.textContent = 'Click To Expand'; 
+
+  daSpan.addEventListener('click', () => {
+    parentDiv.classList.toggle('article-open'); 
+  })
+  return parentDiv; 
+
+}
+
+
+const daParent = document.querySelector('.articles'); 
+data.forEach(data => {
+  daParent.append(articleCreator(data)); 
+})
+
+// Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
